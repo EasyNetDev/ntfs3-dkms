@@ -1,0 +1,8 @@
+PACKAGE_NAME="#PKG_NAME#"
+PACKAGE_VERSION="#VERSION#"
+MAKE="make -C $kernel_source_dir M=$dkms_tree/$PACKAGE_NAME/$PACKAGE_VERSION/build CONFIG_NTFS3_FS=m CONFIG_NTFS3_LZX_XPRESS=y"
+CLEAN="make clean"
+BUILT_MODULE_NAME="#DRIVER_NAME#"
+BUILT_MODULE_LOCATION="ntfs3/$(echo $kernelver | sed 's/\([0-9]\+\.[0-9]\+\)\..*/\1/g')/"
+AUTOINSTALL="yes"
+DEST_MODULE_LOCATION="/extra"

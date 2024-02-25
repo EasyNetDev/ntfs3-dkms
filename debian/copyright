@@ -1,0 +1,16 @@
+This package was debianized by Adrian Ban <devel@easynet.dev>  on  Sat, 24 Feb 2024 23:20:20 +0200
+
+Upstream Author(s): 
+	EasyNet Consulting SRL, http://www.easynet.dev
+
+Downloaded from:
+	https://github.com/EasyNetDev/ntfs3-dkms/archive/refs/heads/main.zip
+
+Copyright:
+	Copyright (C) 2022 EasyNet Consulting SRL, Romania
+
+License:
+	GPLv2
+
+The Debian packaging is (C) 2013, Canonical Ltd and is licensed
+under the GPL 2 or later, see `/usr/share/common-licenses/GPL-2'.

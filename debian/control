@@ -1,0 +1,17 @@
+Source: ntfs3-dkms
+Section: admin
+Priority: optional
+Maintainer: Adrian Ban <devel@abtelecom.ro>
+Build-Depends: debhelper (>= 7.0.50~)
+Standards-Version: 3.9.1
+Homepage: https://github.com/EasyNetDev/ntfs3-dkms
+Vcs-Browser: https://github.com/EasyNetDev/ntfs3-dkms
+Vcs-Git: https://github.com/EasyNetDev/ntfs3-dkms.git
+
+Package: ntfs3-dkms
+Architecture: all
+Depends: ${misc:Depends}, dkms, linux-libc-dev, libc6-dev
+XB-Modaliases: ${modaliases}
+Description:  NTFS Read-Write file system support
+ Windows OS native file system (NTFS) support up to NTFS version 3.1.
+ This is original Linux Driver ported as external module

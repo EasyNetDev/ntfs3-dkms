@@ -1,0 +1,21 @@
+# Autodetection if we have a driver for the specific MAJOR.MINOR version of kernel
+# In case the directory MAJOR.MINOR is missing, we stop compilation with an error
+
+ifeq ($(KVER_MAJ_MIN),)
+$(error KVER_MAJ_MIN not defined. Maybe there is an error in Kbuild/Makefile)
+endif
+
+# Just for debugging
+#$(info DIR="$(M)/ntfs3/$(KVER_DIR)")
+
+KVER_DIR = $(wildcard $(M)/ntfs3/$(KVER_MAJ_MIN)/Makefile)
+
+$(info KVER_DIR="$(KVER_DIR)")
+
+ifeq ($(KVER_DIR),)
+$(error Couldn't find driver sources for Linux Kernel $(KVER_MAJ_MIN).X. Just copy from latest Linux kernel sources version linux-$(KVER_MAJ_MIN).X/fs/ntfs3 directory under drivers/$(KVER_MAJ_MIN)/ and try again.)
+else
+$(info Found driver sources for Linux Kernel $(KVER_MAJ_MIN).x)
+endif
+
+obj-$(CONFIG_NTFS3_FS)                   := $(KVER_MAJ_MIN)/
