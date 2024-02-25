@@ -32,7 +32,6 @@ override_dh_auto_install:
 			-e "s|#ARCH#|$(ARCH_SUFFIX)|" \
 			debian/$$i.in > debian/$$i; \
 	done
-	rm debian/$(PKG_kernel_src).install.in
 
 override_dh_clean:
 	dh_clean

@@ -1,7 +1,7 @@
 Source: ntfs3-dkms
 Section: admin
 Priority: optional
-Maintainer: Adrian Ban <devel@abtelecom.ro>
+Maintainer: Adrian Ban <devel@easynet.dev>
 Build-Depends: debhelper (>= 7.0.50~)
 Standards-Version: 3.9.1
 Homepage: https://github.com/EasyNetDev/ntfs3-dkms
