@@ -32,7 +32,7 @@ PWD	:= $(shell pwd)
 PWD	:= $(shell pwd)
 
 # Autodetection if we have a driver for the specific MAJOR.MINOR version of kernel
-export KVER_MAJ_MIN := $(shell $(KVER) | sed "s/\([0-9]\+\.[0-9]\+\)\..*/\1/g")
+export KVER_MAJ_MIN := $(shell echo $(KVER) | sed "s/\([0-9]\+\.[0-9]\+\)\..*/\1/g")
 
 export CONFIG_NTFS3_FS=m
 export CONFIG_NTFS3_LZX_XPRESS=y
