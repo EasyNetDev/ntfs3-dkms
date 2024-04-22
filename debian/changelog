@@ -1,3 +1,9 @@
+ntfs3-dkms (1.0.5) unstable; urgency=medium
+
+  * Move all configuration symbols in Makefile
+
+ -- Adrian Ban <devel@easynet.dev>  Thu, 24 Feb 2024 23:18:20 +0200
+
 ntfs3-dkms (1.0.4) unstable; urgency=medium
 
   * NTFS3 driver from Linux kernel 6.4.16

@@ -1,6 +1,5 @@
 README.md		usr/src/#PKG_NAME#-#VERSION#/
 LICENSE			usr/src/#PKG_NAME#-#VERSION#/
 Makefile		usr/src/#PKG_NAME#-#VERSION#/
-Kbuild			usr/src/#PKG_NAME#-#VERSION#/
 debian/dkms.conf	usr/src/#PKG_NAME#-#VERSION#/
 ntfs3/			usr/src/#PKG_NAME#-#VERSION#/

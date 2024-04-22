@@ -2,13 +2,43 @@
 # Makefile for Linux NTFS3 filesystem driver.
 #
 
-ifneq ($(KERNELRELEASE),)
-# call from kernel build system
+export DRIVER_NAME := ntfs3
+
+# Define SYMBOLS / MACROS for which modules to build
+export CONFIG_NTFS3_FS=m
+export CONFIG_NTFS3_LZX_XPRESS=y
+export CONFIG_NTFS3_64BIT_CLUSTER=y
+export CONFIG_NTFS3_LZX_XPRESS=y
+export CONFIG_NTFS3_FS_POSIX_ACL=y
+
+# Add necessary macros to the compiler depending on whan we get on make command
+ifeq ($(CONFIG_NTFS3_FS),m)
+KBUILD_CFLAGS += -DCONFIG_NTFS3_FS_MODULE
+endif
+
+ifeq ($(CONFIG_NTFS3_LZX_XPRESS),y)
+KBUILD_CFLAGS += -DCONFIG_NTFS3_LZX_XPRESS
+endif
+
+ifeq ($(CONFIG_NTFS3_64BIT_CLUSTER),y)
+KBUILD_CFLAGS += -DCONFIG_NTFS3_64BIT_CLUSTER
+endif
+
+ifeq ($(CONFIG_NTFS3_LZX_XPRESS),y)
+KBUILD_CFLAGS += -DCONFIG_NTFS3_LZX_XPRESS
+endif
+
+ifeq ($(CONFIG_NTFS3_FS_POSIX_ACL),y)
+KBUILD_CFLAGS += -DCONFIG_NTFS3_FS_POSIX_ACL
+endif
 
 # Autodetection if we have a driver for the specific MAJOR.MINOR version of kernel
 export KVER_MAJ_MIN := $(shell echo ${KERNELRELEASE} | sed "s/\([0-9]\+\.[0-9]\+\)\..*/\1/g")
 
-include Kbuild
+ifneq ($(KERNELRELEASE),)
+# call from kernel build system
+
+obj-y := $(DRIVER_NAME)/
 
 else
 # external module build
@@ -29,25 +59,16 @@ KVER	?= $(shell uname -r)
 KDIR	?= /lib/modules/$(KVER)/build
 MDIR	?= /lib/modules/$(KVER)
 PWD	:= $(shell pwd)
-PWD	:= $(shell pwd)
-
-# Autodetection if we have a driver for the specific MAJOR.MINOR version of kernel
-export KVER_MAJ_MIN := $(shell echo $(KVER) | sed "s/\([0-9]\+\.[0-9]\+\)\..*/\1/g")
-
-export CONFIG_NTFS3_FS=m
-export CONFIG_NTFS3_LZX_XPRESS=y
-
 obj-$(CONFIG_NTFS3_FS) := ntfs3/
 
 %.ko:
 	$(MAKE) -C $(KDIR) M=$(PWD)
 
 PHONY += all
-all: clean ntfs3.ko
-	echo $(CONFIG_NTFS3_FS)
+all: ${DRIVER_NAME}.ko
 
 PHONY += modules
-modules: ntfs3.ko
+modules: ${DRIVER_NAME}.ko
 
 PHONY += clean
 clean:
