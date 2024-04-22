@@ -1,8 +1,16 @@
+ntfs3-dkms (1.0.6) unstable; urgency=medium
+
+  * Update NTFS3 for Kernel 6.7
+  * Add NTFS3 for Kernel 6.8
+  * Add NTFS3 for Kernel 6.9 RC
+
+ -- EasyNetDev <devel@easynet.dev>  Thu, 24 Feb 2024 23:18:20 +0200
+
 ntfs3-dkms (1.0.5) unstable; urgency=medium
 
   * Move all configuration symbols in Makefile
 
- -- Adrian Ban <devel@easynet.dev>  Thu, 24 Feb 2024 23:18:20 +0200
+ -- EasyNetDev <devel@easynet.dev>  Thu, 24 Feb 2024 23:18:20 +0200
 
 ntfs3-dkms (1.0.4) unstable; urgency=medium
 
