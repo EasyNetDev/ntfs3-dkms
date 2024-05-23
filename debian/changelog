@@ -1,3 +1,11 @@
+ntfs3-dkms (1.0.7) unstable; urgency=medium
+
+  * Update NTFS3 for Kernel 6.6.31
+  * Update NTFS3 for Kernel 6.8.10
+  * Update NTFS3 for Kernel 6.9.1
+
+ -- EasyNetDev <devel@easynet.dev>  Thu, 23 May 2024 17:03:20 +0200
+
 ntfs3-dkms (1.0.6) unstable; urgency=medium
 
   * Update NTFS3 for Kernel 6.7

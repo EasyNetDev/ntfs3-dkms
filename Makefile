@@ -6,10 +6,11 @@ export DRIVER_NAME := ntfs3
 
 # Define SYMBOLS / MACROS for which modules to build
 export CONFIG_NTFS3_FS=m
-export CONFIG_NTFS3_LZX_XPRESS=y
 export CONFIG_NTFS3_64BIT_CLUSTER=y
 export CONFIG_NTFS3_LZX_XPRESS=y
 export CONFIG_NTFS3_FS_POSIX_ACL=y
+# Kerne 6.9 removed support for old NTFS driver and is replacing with this one.
+export CONFIG_NTFS_FS=y
 
 # Add necessary macros to the compiler depending on whan we get on make command
 ifeq ($(CONFIG_NTFS3_FS),m)
