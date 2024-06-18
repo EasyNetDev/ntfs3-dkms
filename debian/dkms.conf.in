@@ -1,5 +1,9 @@
 PACKAGE_NAME="#PKG_NAME#"
 PACKAGE_VERSION="#VERSION#"
+# To avoid missing sources for NTFS3 for spefici kernel versions
+# We have to set here to build only for Kernels that are present in ntfs3 directory
+# For the moment: 6.4 to 6.9 are present.
+BUILD_EXCLUSIVE_KERNEL="^(6.[4-9]\.)"
 # All symbols are defined in Makefile
 MAKE="make -C $kernel_source_dir M=$dkms_tree/$PACKAGE_NAME/$PACKAGE_VERSION/build"
 CLEAN="make clean"
