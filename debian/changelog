@@ -1,3 +1,9 @@
+ntfs3-dkms (1.0.9) unstable; urgency=medium
+
+  * Add Linux Kernel 6.10 NTFS3 driver
+
+ -- EasyNetDev <devel@easynet.dev>  Tue, 21 Jul 2024 17:40:14 +0300
+
 ntfs3-dkms (1.0.8) unstable; urgency=medium
 
   * Add in dkms.conf.in BUILD_EXCLUSIVE_KERNEL to avoid upgrades issues when a new Kernel is installed and we don't have a drivers in ntfs3/
