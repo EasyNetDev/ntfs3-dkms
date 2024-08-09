@@ -2,7 +2,7 @@ PACKAGE_NAME="#PKG_NAME#"
 PACKAGE_VERSION="#VERSION#"
 # To avoid missing sources for NTFS3 for spefici kernel versions
 # We have to set here to build only for Kernels that are present in ntfs3 directory
-# For the moment: 6.4 to 6.9 are present.
+# For the moment: 6.4 to 6.11 are present.
 #BUILD_EXCLUSIVE_KERNEL="^(6.[4-9]\.)"
 BUILD_EXCLUSIVE_KERNEL_MIN="#MIN_VER#"
 BUILD_EXCLUSIVE_KERNEL_MAX="#MAX_VER#"
