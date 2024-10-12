@@ -2,7 +2,7 @@
 
 DRIVER="ntfs3"
 
-for KVER in `ls -1 $DRIVER | grep "^[0-9]\+\.[0-9]\+"`;
+for KVER in `ls -1 $DRIVER | grep "^[0-9]\+\.[0-9]\+" | sort -V`;
 do
     echo "Kernel $KVER:"
     for SYMBOL in `find ./$DRIVER/$KVER/ -name Kconfig`; do
