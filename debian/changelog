@@ -55,5 +55,5 @@ ntfs3-dkms (1.0.4) unstable; urgency=medium
   * NTFS Read-Write file system support
   * This package contains the original NTFS3 Linux Kernel driver from kernel itself and I adapted as an external module for Kernels that are not shipped with it, like Debian.
 
- -- Adrian Ban <devel@easynet.dev>  Thu, 24 Feb 2024 23:18:20 +0200
+ -- EasyNetDev <devel@easynet.dev>  Thu, 24 Feb 2024 23:18:20 +0200
 
