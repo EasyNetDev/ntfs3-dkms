@@ -1,4 +1,4 @@
-# NTFS / NTFS3 Read-Write file system support
+# Linux Kernel NTFS / NTFS3 Read-Write file system support for DKMS
 Windows OS native file system (NTFS) support up to NTFS version 3.1.
 
 This driver is the original driver from Kernel Sources and made in form of DKMS to be build on systems that are not shipped yet with NTFS3 driver, like Debian.
