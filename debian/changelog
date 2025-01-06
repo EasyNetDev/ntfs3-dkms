@@ -1,3 +1,15 @@
+ntfs3-dkms (1.0.12) unstable; urgency=medium
+
+  * Add Linux Kernel 6.13 NTFS3 driver.
+  * Fix the Makefile install/uninstall.
+  * Move all CONFIG_* to a separate file Config.mk .
+  * Fix dkms.conf BUILD_EXCLUSIVE_KERNEL_MIN and BUILD_EXCLUSIVE_KERNEL_MAX.
+  MIN must be with -1 and MAX with +1 in comparation with current drivers versions.
+  * For the DKMS to be able to build the driver with correct CONFIG_* we must set them in MAKE.
+  * Add make dkms-config to get the list of CONFIG_* to be added in DKMS MAKE variable.
+
+ -- EasyNetDev <devel@easynet.dev>  Mon, 06 Jan 2025 11:36:31 +0300
+
 ntfs3-dkms (1.0.11) unstable; urgency=medium
 
   * Add Linux Kernel 6.12-rc2 NTFS3 driver

@@ -5,11 +5,25 @@ VERSION := $(shell dpkg-parsechangelog | grep '^Version:' | cut -d' ' -f2 | cut 
 PKG_NAME := ntfs3
 PKG_kernel_src  := $(PKG_NAME)-dkms
 ARCH := $(shell dpkg --print-architecture)
-ifeq ($(ARCH),amd64)
-ARCH_SUFFIX=x86_64
-else
-ARCH_SUFFIX=i386
-endif
+#ifeq ($(ARCH),amd64)
+#ARCH_SUFFIX=x86_64
+#else
+#ARCH_SUFFIX=i386
+#endif
+
+KVER_MIN := $(shell ls -1 $(DRIVER_NAME) | grep "^[0-9]\." | sort -V | head -1)
+KVER_MAX := $(shell ls -1 $(DRIVER_NAME) | grep "^[0-9]\." | sort -V | tail -1)
+
+## We need one version lower for BUILD_EXCLUSIVE_KERNEL_MIN
+## and one version higher for BUILD_EXCLUSIVE_KERNEL_MAX
+KVER_MIN_MAJOR := $(shell echo $(KVER_MIN) | sed "s/\([0-9]\+\)\.[0-9]\+/\1/g")
+KVER_MIN_MINOR := $(shell echo $(KVER_MIN) | sed "s/[0-9]\+\.\([0-9]\+\)/\1/g")
+
+KVER_MAX_MAJOR := $(shell echo $(KVER_MAX) | sed "s/\([0-9]\+\)\.[0-9]\+/\1/g")
+KVER_MAX_MINOR := $(shell echo $(KVER_MAX) | sed "s/[0-9]\+\.\([0-9]\+\)/\1/g")
+
+MOD_KVER_MIN_MINOR := $(shell echo $$(($(KVER_MIN_MINOR)-1)))
+MOD_KVER_MAX_MINOR := $(shell echo $$(($(KVER_MAX_MINOR)+1)))
 
 %:
 	dh "$@"
@@ -30,8 +44,10 @@ override_dh_auto_install:
 			-e "s|#DRIVER_NAME#|$(DRIVER_NAME)|" \
 			-e "s|#VERSION#|$(VERSION)|" \
 			-e "s|#ARCH#|$(ARCH_SUFFIX)|" \
-			-e "s|#MIN_VER#|$(shell ls -1 ntfs3 | grep "^[0-9]\." | sort -V | head -1)|" \
-			-e "s|#MAX_VER#|$(shell ls -1 ntfs3 | grep "^[0-9]\." | sort -V | tail -1)|" \
+			-e "s|#MOD_MIN_VER#|$(KVER_MAX_MAJOR).$(KVER_MIN_MINOR)|" \
+			-e "s|#MOD_MAX_VER#|$(KVER_MAX_MAJOR).$(KVER_MAX_MINOR)|" \
+			-e "s|#MIN_VER#|$(KVER_MAX_MAJOR).$(MOD_KVER_MIN_MINOR)|" \
+			-e "s|#MAX_VER#|$(KVER_MAX_MAJOR).$(MOD_KVER_MAX_MINOR)|" \
 			debian/$$i.in > debian/$$i; \
 	done
 

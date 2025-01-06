@@ -1,0 +1,12 @@
+export DRIVER_NAME := ntfs3
+export DRIVER_SRC_PATH :=
+export DRIVER_KPATH := fs
+
+# Define SYMBOLS / MACROS for which modules to build
+MODULE_CONFIG := CONFIG_NTFS3_FS=m \
+		CONFIG_NTFS3_64BIT_CLUSTER=y \
+		CONFIG_NTFS3_LZX_XPRESS=y \
+		CONFIG_NTFS3_FS_POSIX_ACL=y \
+		CONFIG_NTFS_FS=y \
+
+MODULES_INSTALL := ntfs3.ko
