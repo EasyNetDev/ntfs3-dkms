@@ -5,9 +5,6 @@ ifeq ($(KVER_MAJ_MIN),)
 $(error KVER_MAJ_MIN not defined. Maybe there is an error in Kbuild/Makefile)
 endif
 
-# Just for debugging
-#$(info DIR="$(M)/ntfs3/$(KVER_DIR)")
-
 KVER_DIR = $(wildcard $(M)/ntfs3/$(KVER_MAJ_MIN)/Makefile)
 
 $(info KVER_DIR="$(KVER_DIR)")

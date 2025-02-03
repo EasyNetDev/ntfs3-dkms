@@ -1,5 +1,5 @@
 #
-# Makefile for Linux NTFS3 filesystem driver.
+# Makefile for generic DKMS Linux driver.
 #
 
 PWD	?= $(shell pwd)
