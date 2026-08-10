@@ -1,12 +1,10 @@
 PACKAGE_NAME="#PKG_NAME#"
 PACKAGE_VERSION="#VERSION#"
 # To avoid missing sources for NTFS3 for a specific kernel version
-# we have to set BUILD_EXCLUSIVE_KERNEL_MIN and BUILD_EXCLUSIVE_KERNEL_MAX to build only driver
-# only between these Kernel versions.
-# This means the driver will not fail for Kernels that are not present outside of these versions.
-# For the moment: #MOD_MIN_VER# to #MOD_MAX_VER# are present.
-BUILD_EXCLUSIVE_KERNEL_MIN="#MIN_VER#"
-BUILD_EXCLUSIVE_KERNEL_MAX="#MAX_VER#"
+# we only build for kernel major.minor versions that exist under ntfs3/.
+# This means the driver will not fail for kernels without matching sources.
+# For the moment: #SUPPORTED_KVERS# are present.
+BUILD_EXCLUSIVE_KERNEL="#BUILD_EXCLUSIVE_KERNEL#"
 # All symbols are defined in Makefile
 MAKE="make -C $kernel_source_dir M=$dkms_tree/$PACKAGE_NAME/$PACKAGE_VERSION/build CONFIG_NTFS3_FS=m CONFIG_NTFS3_64BIT_CLUSTER=y CONFIG_NTFS3_LZX_XPRESS=y CONFIG_NTFS3_FS_POSIX_ACL=y CONFIG_NTFS_FS=y"
 CLEAN="make clean"
